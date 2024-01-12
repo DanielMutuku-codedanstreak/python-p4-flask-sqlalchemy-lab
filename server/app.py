@@ -31,12 +31,20 @@ def animal_by_id(id):
 @app.route('/zookeeper/<int:id>')
 def zookeeper_by_id(id):
     zookeeper = Zookeeper.query.get_or_404(id)
-    return render_template('zookeeper.html', zookeeper=zookeeper)
+    return(
+        f'<li>ID:{zookeeper.id}</li><br/>'
+        f'<li>Name:{zookeeper.name}</li><br/>'
+        f'<li>Birthday:{zookeeper.birthday}</li><br/>'
+    )
 
 @app.route('/enclosure/<int:id>')
 def enclosure_by_id(id):
     enclosure = Enclosure.query.get_or_404(id)
-    return render_template('enclosure.html', enclosure=enclosure)
+    return(
+        f'<li>ID:{enclosure.id}</li><br/>'
+        f'<li>Environment:{enclosure.environment}</li><br/>'
+        f'<li>Open to visitors:{enclosure.open_to_visitors}</li><br/>'
+    )
 
 
 if __name__ == '__main__':
